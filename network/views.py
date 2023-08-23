@@ -1,13 +1,16 @@
+import json
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
-
-from .models import User
+from django.views.decorators.csrf import csrf_exempt
+from .models import User, Tweets
 
 
 def index(request):
+    # tweets = Tweets.objects.all()
     return render(request, "network/index.html")
 
 
@@ -61,3 +64,47 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "network/register.html")
+
+
+# For Api Routes
+@csrf_exempt
+@login_required
+def Post(request):
+    if(request.method != "POST"):
+        return JsonResponse({"error" : "POST request required."}, status=400)
+    
+    else:
+        data = json.loads(request.body)
+
+        post = data.get("post", "")
+        users = set()
+        users.add(request.user)
+        for user in users:
+            tweet = Tweets(
+                user = user,
+                sender = request.user,
+                reply = False,
+                post = post,
+                likes = 0
+            )
+            tweet.save()
+        return JsonResponse({"message": "Email sent successfully."}, status=201)
+
+
+
+@csrf_exempt
+def tweets(request):
+    pass
+
+def tweetsType(request, tweet_view):
+    if tweet_view == "myPosts":
+        tweets = Tweets.objects.all()
+    elif tweet_view == "AllPosts":
+        tweets = Tweets.objects.all()
+    elif tweet_view == "othersPost":
+        tweets = Tweets.objects.filter(user= request.user)
+    else:
+        return JsonResponse({"error": "Invalid mailbox."}, status=400)
+    
+    # tweets = tweets.order_by("-tweetDate").all()
+    return JsonResponse([tweet.serialize() for tweet in tweets], safe=False)

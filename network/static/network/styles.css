@@ -1,7 +1,7 @@
 body{
-    background-color: #0b0c1a;
+    background-color: black;
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Poppins', 'Sans-serif', 'Arial';
 }
 
 .effect1{
@@ -9,10 +9,10 @@ body{
     position: absolute;
     width: 400px;
     height: 200px;
-    background-color: #04c4c7;
+    background-color: #000000;
     left: 10%;
     top: 0%;
-    filter: blur(200px);
+    filter: blur(210px);
     border-radius: 20%;
     
 }
@@ -21,7 +21,7 @@ body{
     position: absolute;
     width: 200px;
     height: 100px;
-    background-color: #c72222;
+    background-color: #ffffffd8;
     left: 20%;
     top: 0%;
     filter: blur(100px);
@@ -30,37 +30,44 @@ body{
 }
 
 .navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     height: 100%;
     margin: 0;
-    position:relative;
-    backdrop-filter: blur(10px);
     padding: 10px 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.356);
 }
 
 .navbar{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration-line: none;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .navbar-brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
-    background-color: #f3ec78;
-    background-image: linear-gradient(45deg, #c72222, #04c4c7);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
     font-size: 32px;
     text-decoration-line: none;
-    padding-bottom: 10px;
     
 }
 
 .navbar-nav{
     margin:10px;
     display: flex;
-    justify-content: left;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-link{
@@ -69,16 +76,147 @@ body{
     justify-content: center;
     text-decoration-line: none;
     box-sizing: border-box;
+    color: #ffffff;
     margin-right: 5px;
-    height: 32px;
+    height: 36.7px;
     min-width:70px;
     border: 1px solid rgba(255,255,255,0.1);
     font-size: 14px;
-    background: #fff;
-    color: #030303;
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
     border: none;
-    height: 36px;
+}
+
+.nav-link:hover{
+    color: #000000;
+    background: rgb(255, 255, 255);
+}
+
+.body{
+    height: 100%;
+    margin: 0;
+    position:relative;
+    backdrop-filter: blur(10px);
+    padding: 10px 10px;
+    color: white;
+}
+
+.body > #register-head{
+    margin-top: 0;
+}
+
+.body > form{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.other{
+    font-size: 12px;
+}
+
+.other-link{
+    color: #ffffff;
+    text-decoration-line: underline;
+}
+
+.other-link:hover{
+    text-decoration-line: underline;
+}
+
+.form-control{
+    background-color: rgba(0, 0, 0, 0.134);
+    border: 0.5px solid rgba(255, 255, 255, 0.715);
+    color: white;
+    
+    min-width: 160px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.submit-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration-line: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    margin-right: 5px;
+    height: 32px;
+    min-width:70px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    border: none;
+    height: 30px;
+}
+
+.submit-btn:hover{
+    color: #000000;
+    background: rgb(255, 255, 255);
+
+}
+
+.new-tweet{
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.new-tweet-form{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.new-tweet-form > input{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.134);
+    border: 0.5px solid rgba(255, 255, 255, 0.715);
+    border-radius: 10px;
+    color: white;
+    width: 200px;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 5px;
+
+}
+.new-tweet-form > input:hover{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 0.5px solid rgb(255, 255, 255);
+    color: black;
+    width: 200px;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 5px;
+
+}
+
+.new-tweet-form > textarea{
+    background-color: rgba(0, 0, 0, 0.134);
+    border: 0.5px solid rgba(255, 255, 255, 0.715);
+    border-radius: 2px;
+    color: white;
+    resize: vertical;
+    min-width: 160px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+#submit-newTweet{
+    width: 100px;
+}
+
+h2{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+h4{
+    margin-top: 2px;
+    margin-bottom: 5px;
 }
