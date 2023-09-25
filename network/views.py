@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from .models import User, Tweets
+from .models import User, Tweet
 
 
 def index(request):
@@ -80,31 +80,47 @@ def Post(request):
         users = set()
         users.add(request.user)
         for user in users:
-            tweet = Tweets(
+            tweet = Tweet(
                 user = user,
                 sender = request.user,
-                reply = False,
+                senderEmail = request.user,
                 post = post,
-                likes = 0
+                likes = 0,
+                isLiked = user == request.user
             )
             tweet.save()
         return JsonResponse({"message": "Email sent successfully."}, status=201)
 
 
+def tweets(request, tweet_id):
+    try:
+        tweet = Tweet.objects.get(pk=tweet_id)
+    except Tweet.DoesNotExist:
+        return JsonResponse({'error' : 'Tweet not found'}, status=404)
+    
+    if request.method == 'GET':
+        return JsonResponse(tweet.serialize())
+    
+    elif request.method == "PUT":
+        data = json.loads(request.body)
+        tweet.likes = data['likes']
+        tweet.isLiked = data['isLiked']
+        tweet.save()
+        return HttpResponse(status=204)
+    
+    else:
+        return JsonResponse({'error' : 'request must be either GET or PUT'}, status=400)
 
-@csrf_exempt
-def tweets(request):
-    pass
 
 def tweetsType(request, tweet_view):
-    if tweet_view == "myPosts":
-        tweets = Tweets.objects.all()
-    elif tweet_view == "AllPosts":
-        tweets = Tweets.objects.all()
-    elif tweet_view == "othersPost":
-        tweets = Tweets.objects.filter(user= request.user)
+    if tweet_view == "myposts":
+        tweets = Tweet.objects.filter(user= request.user, sender= request.user)
+    elif tweet_view == "allposts":
+        tweets = Tweet.objects.all()
+    elif tweet_view == "otherposts":
+        tweets = Tweet.objects.filter(user= request.user)
     else:
         return JsonResponse({"error": "Invalid mailbox."}, status=400)
     
-    # tweets = tweets.order_by("-tweetDate").all()
+    tweets = tweets.order_by("-tweetDate").all()
     return JsonResponse([tweet.serialize() for tweet in tweets], safe=False)

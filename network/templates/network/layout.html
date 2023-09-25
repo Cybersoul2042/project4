@@ -5,38 +5,60 @@
     <head>
         <title>{% block title %}Social Network{% endblock %}</title>
         <link href="{% static 'network/styles.css' %}" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/4679afff72.js" crossorigin="anonymous"></script>
         {% block script %}
         {% endblock %}
     </head>
     <body>
-        <div class="effect1"></div>
-        <div class="effect2"></div>
-        <div class=".container">
-            <div class="navbar-container">
-                <nav class="navbar">
-                    <a class="navbar-brand" href="#">Network</a>
-                    <div class="navbar-nav">
+        <div class="flex-container container">
+            <div class="flex-child navbar-container">
+                <div class="flex-container navbar-content">
+                    <nav class="flex-child navbar">
+                        <div class="navbar-brand">
+                            <a class="navbar-name" href="{% url 'index' %}">Y</a>
+                        </div>
+                        <div class="navbar-nav">
+                            <a class="nav-link" id="allposts" href="{% url 'index' %}">Home</a>
+                            {% if user.is_authenticated %}
+                                <a class="nav-link" id="following" href="#">Following</a>
+                                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                                <a class="nav-link" id="newpost">Post</a>
+                            {% else %}
+                                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>  
+                            {% endif %}
+                            
+                        </div>
+                       
+                    </nav>
+                    <div class="flex-child user-profile">
                         {% if user.is_authenticated %}
-                        <a class="nav-link" href="#"><strong>{{ user.username }}</strong></a>
-                        {% endif %}
-                          <a class="nav-link" id="all-posts" href="{% url 'index' %}">All Posts</a>
-                        {% if user.is_authenticated %}
-                            <a class="nav-link" id="following" href="#">Following</a>
-                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                        {% else %}
-                            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                            <a class="nav-link" href="{% url 'register' %}">Register</a>  
+                            <a class="nav-link" id="user" href="#profile"><strong>{{ user.username }}</strong></a>
                         {% endif %}
                     </div>
-                </nav>
+                </div>
             </div>
+           
             
-            <div class="body">
+            <div class="flex-child body">
                 {% block body %}
                 {% endblock %}
+            </div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div id="myModal-content">
+                <form>
+                    <div id="newpost-titlediv">
+                        <p id="newpost-title">New Post</p>
+                    </div>
+                    <div id="post-textdiv">   
+                        <textarea name="post" id="post-text" cols="65" rows="6" placeholder="What is happening?!"></textarea>
+                    </div>
+                    <div id="submit-btndiv">
+                        <input id="submit-btn" type="submit" value="post">
+                    </div>
+                </form>
             </div>
         </div>
     </body>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Tweets
+from .models import User, Tweet
 
 # Register your models here.
 
@@ -9,4 +9,4 @@ class UsersTweets(admin.ModelAdmin):
     tweets_list = ("id", "user", "tweetText", "tweetDate")
 
 admin.site.register(User, UsersAdmin)
-admin.site.register(Tweets, UsersTweets)
+admin.site.register(Tweet, UsersTweets)

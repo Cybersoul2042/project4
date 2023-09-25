@@ -2,101 +2,104 @@ body{
     background-color: black;
     margin: 0;
     font-family: 'Poppins', 'Sans-serif', 'Arial';
+    color: #fefefe;
 }
 
-.effect1{
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 200px;
-    background-color: #000000;
-    left: 10%;
-    top: 0%;
-    filter: blur(210px);
-    border-radius: 20%;
-    
-}
-.effect2{
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 100px;
-    background-color: #ffffffd8;
-    left: 20%;
-    top: 0%;
-    filter: blur(100px);
-    border-radius: 20%;
-    
+.container{
+    display: flex;
 }
 
+.navbar-content{
+    display: flex;
+    flex-direction: column;
+    height: 100vmin;
+}
 .navbar-container{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    text-align: left;
     position: relative;
-    height: 100%;
-    margin: 0;
-    padding: 10px 10px;
+    height: 100vmin;
+    padding: 5px 5px;
+    padding-left: 5px;
     padding-bottom: 0;
     padding-top: 0;
     background-color: rgba(0, 0, 0, 0.25);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.356);
+    border-right: 1px solid rgba(255, 255, 255, 0.356);
+    
 }
 
 .navbar{
     display: flex;
+    flex-direction: column;
+    vertical-align: top;
     align-items: center;
-    justify-content: center;
     text-decoration-line: none;
     box-sizing: border-box;
     margin-top: 5px;
-    margin-bottom: 5px;
+    flex: 1;
 }
 
 .navbar-brand{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 48px;
+}
+
+.navbar-name{
     color: #fff;
-    font-size: 32px;
+    font-size: 48px;
     text-decoration-line: none;
-    
+    max-width: 100%;
+}
+
+.navbar-brand:hover{
+    border-radius: 48px;
+    background-color: rgba(255, 255, 255, 0.104);
 }
 
 .navbar-nav{
     margin:10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .nav-link{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-decoration-line: none;
+    font-size: 24px;
+    border: 0 solid black;
     box-sizing: border-box;
-    color: #ffffff;
-    margin-right: 5px;
-    height: 36.7px;
-    min-width:70px;
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 14px;
-    border-radius: 16px;
-    border: none;
+    position: relative;
+    border-bottom-left-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+    color: white;
+    text-decoration-line: none;
+    padding: 8px;
 }
 
 .nav-link:hover{
-    color: #000000;
-    background: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.104);
+    cursor: pointer;
+}
+
+.user-profile{
+    vertical-align: bottom;
+    margin-bottom: 5px;
 }
 
 .body{
-    height: 100%;
+    height: 100vmin;
+    width: 500px;
     margin: 0;
     position:relative;
     backdrop-filter: blur(10px);
-    padding: 10px 10px;
     color: white;
 }
 
@@ -110,12 +113,16 @@ body{
     padding-bottom: 10px;
 }
 
+.flex-child:first-child {
+    margin-right: 5px;
+} 
+
 .form-group{
     margin-bottom: 10px;
 }
 
 .other{
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .other-link{
@@ -133,7 +140,7 @@ body{
     color: white;
     
     min-width: 160px;
-    font-size: 12px;
+    font-size: 16px;
     padding: 5px;
 }
 
@@ -148,7 +155,7 @@ body{
     height: 32px;
     min-width:70px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    font-size: 14px;
+    font-size: 18px;
     background: rgba(255,255,255,0.1);
     border-radius: 2px;
     border: none;
@@ -158,7 +165,6 @@ body{
 .submit-btn:hover{
     color: #000000;
     background: rgb(255, 255, 255);
-
 }
 
 .new-tweet{
@@ -180,7 +186,7 @@ body{
     border-radius: 10px;
     color: white;
     width: 200px;
-    font-size: 16px;
+    font-size: 24px;
     padding: 5px;
     margin-top: 5px;
 
@@ -191,7 +197,7 @@ body{
     border: 0.5px solid rgb(255, 255, 255);
     color: black;
     width: 200px;
-    font-size: 16px;
+    font-size: 24px;
     padding: 5px;
     margin-top: 5px;
 
@@ -204,7 +210,7 @@ body{
     color: white;
     resize: vertical;
     min-width: 160px;
-    font-size: 12px;
+    font-size: 24px;
     padding: 5px;
 }
 
@@ -213,10 +219,157 @@ body{
 }
 
 h2{
+    font-size: 30px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 h4{
     margin-top: 2px;
     margin-bottom: 5px;
+}
+p{
+    margin: 0;
+}
+
+#no-post{
+    font-size: 32px;
+    margin-top: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.36);
+}
+
+#post-contents{
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+}
+
+#post-contents:hover{
+    cursor: pointer;
+}
+
+.content1{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+#sender{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+#text{
+    font-size: 20px;
+}
+
+.content2{
+    display: flex;
+    flex-direction: row;
+}
+/* 
+.details{
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+} */
+
+#like-cont{
+    text-align: center;
+    line-height: 32px;
+    margin-right : auto;
+}
+
+#like-cont:hover{
+    color: rgb(255, 10, 10);
+}
+
+/* #icon-cont{
+    text-align: center;
+    line-height: 32px;
+} */
+
+
+/* #like-cont:hover > #icon-cont > #heart{
+    background-color: rgba(255, 0, 0, 0.149);
+    width: 26px;
+    height: 26px;
+    line-height: 28px;
+    border-radius: 50%;
+} */
+
+#views-cont{
+    text-align: center;
+    line-height: 32px;
+    margin-right: auto;
+}
+
+#date-cont{
+    margin-left: auto;
+}
+
+#date{
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.33);
+    line-height: 32px;
+}
+
+.modal{
+    display: none; /* Hidden by default */
+    text-align: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@keyframes animatetop{
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    
+}
+
+#newpost-titlediv{
+    text-align: center;
+    font-size: 28px;
+    height: 50px;
+    color:#fefefe;
+}
+
+#submit-btndiv{
+    text-align: right;
+    width: 494.21px;
+    margin: 0 auto 0 auto;
+}
+
+#post-text{
+    background-color: rgb(0, 0, 0);
+    border: 0.5px solid rgba(255, 255, 255, 0.715);
+    border-radius: 2px;
+    color: white;
+    font-size: 21px;
+    height: 5em;
+    width: 22.7em;
+    resize: vertical;
+    padding: 5px;
+    margin-left: 2px;
 }
